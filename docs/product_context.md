@@ -3,7 +3,7 @@
 **Paste this to AI tools for instant context**
 
 ## What This Is
-A database mapping tech founders' professional networks to enable warm introductions for recruiters at Tech in Asia.
+A database mapping tech founders' professional networks to enable warm introductions for recruiters.
 
 ## Current Status
 - **Phase:** MVP/Pilot
@@ -19,19 +19,17 @@ A database mapping tech founders' professional networks to enable warm introduct
 
 ## Success Metrics (Pilot Phase)
 - [ ] 10 founder profiles showing clear recruiting value
-- [ ] Minimum 3 warm intro paths per founder
+- [ ] Minimum 3 verified connections per founder
 - [ ] Newsletter format is actionable for recruiters
 - [ ] Manager validates approach
 
 ## Current Open Questions
-- How to prioritize which founders to research next?
-- Should we track events/conferences for additional context?
-- What's the minimum viable relationship strength to include?
+- How to define a structured workflow research on a founder's network and their close people?
 
 ## Recent Changes
 - **2026-01-14:** Added `related_person_id` field for bidirectional network mapping
 - **2026-01-14:** Decided to skip inactive LinkedIn profiles (ADR-004)
-- **2026-01-13:** Established "direct mentions only" research principle (ADR-002)
+- **2026-01-13:** Established direct mentions only research principle (ADR-002)
 
 ## Quick Links
 - [Database Schema](../database_structure.md)

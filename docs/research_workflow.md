@@ -6,15 +6,7 @@ Step-by-step process for identifying "door openers" to tech founders.
 
 ## Step 1: Profile Selection
 
-**Question:** Is this founder worth researching?
-
-**Criteria:**
-- Tech background (CTO, VP Eng, technical co-founder)
-- Active LinkedIn (posted within 6 months)
-- Company raised funding recently (growth signal)
-- Southeast Asia based
-
-**Time budget:** 10 minutes to evaluate
+1. They are co-founders or C-suite of startups raising funds recently. I will pick it manually. 
 
 ---
 
@@ -23,10 +15,9 @@ Step-by-step process for identifying "door openers" to tech founders.
 **Question:** Who are their potential door openers?
 
 **Source Priority (in order):**
-1. **Company "Our Team" page** → Board members, advisors, senior team
-2. **Founder's LinkedIn posts** (last 2 years) → Tags, mentions
-3. **Podcast appearances** → People mentioned by name
-4. **Funding announcements** → Investors quoted, people thanked
+1. **Company "Our Team" page** → Board members, Advisors, Senior team
+2. **Founder's LinkedIn posts** → Direct mentions
+3. **Podcast appearances** → People mentioned by name, guests and hosts
 
 **Time budget:** 30 minutes
 
@@ -37,16 +28,15 @@ Step-by-step process for identifying "door openers" to tech founders.
 **Question:** Can this person actually open doors?
 
 **"Door Opener" Criteria:**
-- ✅ Direct working relationship (not just overlapping tenure)
+- ✅ Direct mentions
 - ✅ Founder publicly acknowledges them (tag, mention, credit)
-- ✅ Still in contact (interaction within 2 years)
 - ✅ Senior enough (C-level, VP+, Board, Investor)
-- ✅ Reachable (active LinkedIn)
+- ✅ Reachable (active LinkedIn account)
 
 **Red Flags (Skip):**
 - ❌ Worked at same company but no direct mention
 - ❌ Junior employees (unless explicitly credited)
-- ❌ Inactive LinkedIn (> 6 months)
+- ❌ Inactive LinkedIn with no posts
 - ❌ No mention in 5+ years
 
 **Time budget:** 15 minutes per potential door opener
@@ -61,7 +51,7 @@ Step-by-step process for identifying "door openers" to tech founders.
    - Use `related_person_id` if they're also a founder in database
    - Use `related_person_name` + `related_person_linkedin_url` if external
 3. Fill `relationship_context` with narrative (where worked, what built, how long)
-4. Add `source_url` for verification
+4. Add `source_url` for verification of each relationship, example: LinkedIn post, podcast link
 
 **Time budget:** 20 minutes
 
@@ -70,7 +60,6 @@ Step-by-step process for identifying "door openers" to tech founders.
 ## Step 5: Quality Check
 
 **Standards:**
-- Minimum 3 door openers per founder
 - Each relationship has clear context ("worked together on X")
 - All source URLs are accessible
 - All related persons are reachable
@@ -86,4 +75,4 @@ Step-by-step process for identifying "door openers" to tech founders.
 ---
 
 **Last Updated:** 2026-01-14  
-**Validated on:** Mao Ching Foo (2 hours, 4 door openers found)
+**Validated on:** Mao Ching Foo (2 hours, 2 door openers found)
