@@ -15,7 +15,7 @@ The database consists of two main tables in Airtable that form a relational netw
 
 **Table ID:** `tblPRj2wTXJQxKXqD`
 
-### Schema (9 fields)
+### Schema (10 fields)
 
 | Field Name | Field Type | Required | Description | Example |
 |------------|-----------|----------|-------------|---------|
@@ -25,7 +25,8 @@ The database consists of two main tables in Airtable that form a relational netw
 | `current_company_slug` | Single line text | No | Slug identifier linking to Tech in Asia's company database. | `realvantage` |
 | `is_founder` | Checkbox | No | Flag to distinguish founders from executives. Default: unchecked. | `true` |
 | `outgoing_relationships` | Link to another record | Auto | Reverse link showing relationships where this person is the main subject. Links to `people_relationships` table. | Auto-generated |
-| `people_relationships` | Link to another record | Auto | Reverse link showing relationships where this person is mentioned. Links to `people_relationships` table. | Auto-generated |
+| `incoming_relationships` | Link to another record | Auto | Reverse link showing relationships where this person is mentioned. Links to `people_relationships` table. | Auto-generated |
+| `updated_at` | Last modified time | Auto | Timestamp when record was last modified. | Auto-generated |
 | `created_at` | Created time | Auto | Timestamp when record was created. | Auto-generated |
 | `created_by` | Created by | Auto | Airtable user who created the record. | Auto-generated |
 | `last_modified_by` | Last modified by | Auto | Airtable user who last modified the record. | Auto-generated |
@@ -129,12 +130,12 @@ Andy is now Chief Architect at RealVantage, brought over by Mao.
 
 When you create a relationship:
 - Person A's profile shows it in `outgoing_relationships`
-- Person B's profile shows it in `people_relationships`
+- Person B's profile shows it in `incoming_relationships`
 
 **Example:**
 - Mao → Andy Kurnia (created in `people_relationships` table)
 - Mao's profile: Shows Andy in "outgoing_relationships"
-- Andy's profile: Shows Mao in "people_relationships"
+- Andy's profile: Shows Mao in "incoming_relationships"
 
 This enables queries like "Show me everyone who knows Andy Kurnia."
 
