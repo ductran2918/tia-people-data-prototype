@@ -15,7 +15,7 @@ The database consists of two main tables in Airtable that form a relational netw
 
 **Table ID:** `tblPRj2wTXJQxKXqD`
 
-### Schema (10 fields)
+### Schema (11 fields)
 
 | Field Name | Field Type | Required | Description | Example |
 |------------|-----------|----------|-------------|---------|
@@ -57,7 +57,7 @@ The database consists of two main tables in Airtable that form a relational netw
 
 **Table ID:** `tblxUHWHGGXFYZlzV`
 
-### Schema (10 fields)
+### Schema (11 fields)
 
 | Field Name | Field Type | Required | Description | Example |
 |------------|-----------|----------|-------------|---------|
