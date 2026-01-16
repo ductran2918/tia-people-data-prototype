@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Founder Research Input Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Founder Research Input Tool</h1>
+            <p class="subtitle">Generate standardized search strategies for founder relationship mapping</p>
+        </header>
+
+        <!-- Step Indicator -->
+        <div class="step-indicator">
+            <div class="step active" data-step="1">
+                <div class="step-number">1</div>
+                <div class="step-label">LinkedIn URL</div>
+            </div>
+            <div class="step" data-step="2">
+                <div class="step-number">2</div>
+                <div class="step-label">Work History</div>
+            </div>
+            <div class="step" data-step="3">
+                <div class="step-number">3</div>
+                <div class="step-label">Additional Info</div>
+            </div>
+            <div class="step" data-step="4">
+                <div class="step-number">4</div>
+                <div class="step-label">Review Strategy</div>
+            </div>
+        </div>
+
+        <!-- Step 1: LinkedIn URL -->
+        <div class="form-step active" id="step1">
+            <h2>Step 1: Founder's LinkedIn Profile</h2>
+            <div class="form-group">
+                <label for="linkedinUrl">LinkedIn Profile URL *</label>
+                <input type="url" id="linkedinUrl" placeholder="https://www.linkedin.com/in/username/" required>
+                <small>Paste the founder's LinkedIn profile URL</small>
+            </div>
+            <div class="button-group">
+                <button type="button" class="btn btn-primary" onclick="goToStep2()">Next: Extract Work History</button>
+            </div>
+        </div>
+
+        <!-- Step 2: Work History Extraction -->
+        <div class="form-step" id="step2">
+            <h2>Step 2: Work History Extraction</h2>
+            
+            <div class="extraction-options">
+                <button type="button" class="btn btn-secondary" onclick="showManualInput()">
+                    📝 Manual Input
+                </button>
+                <button type="button" class="btn btn-secondary" onclick="showAutoExtract()">
+                    🤖 Auto-Extract (Requires Manus)
+                </button>
+            </div>
+
+            <!-- Manual Input Section -->
+            <div id="manualInputSection" style="display:none;">
+                <div class="info-box">
+                    <strong>Instructions:</strong> Copy work history from LinkedIn and paste below. Format: Company Name (Year-Year) - Role
+                </div>
+                <div class="form-group">
+                    <label for="workHistoryText">Work History</label>
+                    <textarea id="workHistoryText" rows="6" placeholder="Example:
+Funding Societies (2015-Present) - Co-founder & CEO
+Goldman Sachs (2013-2015) - Associate, Trading Desk
+McKinsey & Company (2011-2013) - Business Analyst"></textarea>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="parseWorkHistory()">Parse Work History</button>
+            </div>
+
+            <!-- Auto Extract Section -->
+            <div id="autoExtractSection" style="display:none;">
+                <div class="info-box warning">
+                    <strong>Note:</strong> Auto-extraction requires Manus credits (~5-10 credits per profile). The LinkedIn URL will be sent to Manus AI for processing.
+                </div>
+                <button type="button" class="btn btn-primary" onclick="requestAutoExtract()">Send to Manus for Extraction</button>
+            </div>
+
+            <!-- Work History Selection -->
+            <div id="workHistorySelection" style="display:none;">
+                <h3>Select Tech Companies for Colleague Search</h3>
+                <div class="info-box">
+                    Only select tech companies, startups, or tech-adjacent roles. Skip traditional industries.
+                </div>
+                <div id="companyCheckboxes"></div>
+                <div class="button-group">
+                    <button type="button" class="btn btn-secondary" onclick="goToStep(1)">← Back</button>
+                    <button type="button" class="btn btn-primary" onclick="goToStep3()">Next: Additional Info →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Additional Information -->
+        <div class="form-step" id="step3">
+            <h2>Step 3: Additional Information</h2>
+            
+            <div class="form-group">
+                <label for="founderName">Founder Name *</label>
+                <input type="text" id="founderName" placeholder="e.g., Kelvin Teo" required>
+            </div>
+
+            <div class="form-group">
+                <label for="companyName">Company Name *</label>
+                <input type="text" id="companyName" placeholder="e.g., Funding Societies" required>
+            </div>
+
+            <div class="form-group">
+                <label for="companyWebsite">Company Website *</label>
+                <input type="url" id="companyWebsite" placeholder="https://example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="founderRole">Founder Role *</label>
+                <input type="text" id="founderRole" placeholder="e.g., Co-founder & CEO" required>
+            </div>
+
+            <div class="form-group">
+                <label for="coFounders">Co-founders (Optional)</label>
+                <input type="text" id="coFounders" placeholder="e.g., John Doe, Jane Smith">
+                <small>Separate multiple names with commas</small>
+            </div>
+
+            <div class="form-group">
+                <label for="searchFocus">Search Focus (Optional)</label>
+                <input type="text" id="searchFocus" placeholder="e.g., Fintech connections, Y Combinator batch mates">
+                <small>Any specific areas to prioritize in the search</small>
+            </div>
+
+            <div class="form-group">
+                <label for="recentEvents">Recent Events (Optional)</label>
+                <textarea id="recentEvents" rows="4" placeholder="Paste raw text from funding announcements, press releases, or other recent news"></textarea>
+                <small>If paywalled, paste the raw text instead of the link</small>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn btn-secondary" onclick="goToStep(2)">← Back</button>
+                <button type="button" class="btn btn-primary" onclick="generateStrategy()">Generate Search Strategy →</button>
+            </div>
+        </div>
+
+        <!-- Step 4: Review Strategy -->
+        <div class="form-step" id="step4">
+            <h2>Step 4: Review & Edit Search Strategy</h2>
+            
+            <div class="strategy-actions">
+                <button type="button" class="btn btn-success" onclick="downloadStrategy()">📥 Download Markdown</button>
+                <button type="button" class="btn btn-success" onclick="copyStrategy()">📋 Copy to Clipboard</button>
+                <button type="button" class="btn btn-secondary" onclick="goToStep(3)">← Edit Input</button>
+            </div>
+
+            <div class="form-group">
+                <label for="strategyOutput">Search Strategy (Editable)</label>
+                <textarea id="strategyOutput" rows="25"></textarea>
+                <small>You can edit the strategy before downloading or copying</small>
+            </div>
+
+            <div class="strategy-actions">
+                <button type="button" class="btn btn-success" onclick="downloadStrategy()">📥 Download Markdown</button>
+                <button type="button" class="btn btn-success" onclick="copyStrategy()">📋 Copy to Clipboard</button>
+                <button type="button" class="btn btn-primary" onclick="resetForm()">🔄 Start New Research</button>
+            </div>
+        </div>
+
+        <!-- Toast Notification -->
+        <div id="toast" class="toast"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
