@@ -43,21 +43,7 @@ Step-by-step process for identifying "door openers" to tech founders.
 
 ---
 
-## Step 4: Data Entry
-
-**Add to Airtable:**
-1. Founder → `people_companies` table
-2. Each validated door opener → `people_relationships` table
-   - Use `related_person_id` if they're also a founder in database
-   - Use `related_person_name` + `related_person_linkedin_url` if external
-3. Fill `relationship_context` with narrative (where worked, what built, how long)
-4. Add `source_url` for verification of each relationship, example: LinkedIn post, podcast link
-
-**Time budget:** 20 minutes
-
----
-
-## Step 5: Quality Check
+## Step 4: Quality Check
 
 **Standards:**
 - Each relationship has clear context ("worked together on X")
