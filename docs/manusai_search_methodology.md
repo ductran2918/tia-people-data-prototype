@@ -24,8 +24,15 @@ This document reveals the exact search strategy, queries, and reasoning used to 
 - Company website
 - Founder role/title
 - Co-founder names
+- Previous tech companies (for colleague search)
 - Recent company events (funding, launches)
 - Search focus (specific industries or connections to prioritize)
+
+**Tech company filter:**
+- User manually specifies which previous companies to include in searches
+- Only tech companies, startups, or tech-adjacent roles
+- Education excluded for now
+- Traditional industries excluded unless specifically tech divisions
 
 ---
 
@@ -72,12 +79,13 @@ Based on profile discovery, create a comprehensive keyword map:
 - Related terms: "peer-to-peer", "alternative finance"
 
 **Education keywords:**
-- Schools attended: "Harvard Business School", "HBS"
-- Specific details: "Section A 2012", "MBA 2012"
+- Currently excluded from searches
+- Focus on work experience at tech companies only
 
-**Previous company keywords:**
-- Past employers: "Goldman Sachs", "McKinsey"
-- Departments: "trading desk", "investment banking"
+**Previous tech company keywords:**
+- Past employers (tech only): "Goldman Sachs", "Grab", "Gojek"
+- Departments: "trading desk", "engineering team"
+- Note: Only include tech companies, startups, or tech-adjacent roles
 
 **Co-founder keywords:**
 - Names: "Reynold Wijaya"
@@ -271,7 +279,58 @@ site:linkedin.com "[Founder 1]" "[Founder 2]"
 
 ---
 
-### 3.8 Photos & Visual Content
+### 3.8 Former Colleague Discovery
+
+**Objective:** Find people who worked with founder at previous tech companies
+
+**Prerequisites:** 
+- Need founder's work history (from LinkedIn or provided by user)
+- **Only search for tech companies** (startups, tech giants, tech-enabled companies)
+- **Exclude traditional industries** (traditional banks, manufacturing, retail, law firms, etc.)
+- **Education excluded** for now (focus on work experience only)
+
+**Search queries:**
+```
+"[Founder Name]" "[Previous Tech Company]" colleagues
+"[Founder Name]" "[Previous Tech Company]" team
+"[Founder Name]" "[Previous Tech Company]" worked with
+"[Founder Name]" "former [Previous Tech Company]"
+"[Founder Name]" "ex-[Previous Tech Company]"
+"[Founder Name]" "my time at [Previous Tech Company]"
+"[Founder Name]" "[Previous Tech Company]" days
+"[Founder Name]" "[Previous Tech Company]" alumni
+site:linkedin.com "[Founder Name]" "[Previous Tech Company]" colleague
+```
+
+**Example for Kelvin Teo (if he worked at Goldman Sachs trading desk):**
+```
+"Kelvin Teo" "Goldman Sachs" colleagues
+"Kelvin Teo" "Goldman Sachs" team
+"Kelvin Teo" "Goldman Sachs" worked with
+"Kelvin Teo" "former Goldman Sachs"
+"Kelvin Teo" "ex-Goldman"
+"Kelvin Teo" "my time at Goldman Sachs"
+site:linkedin.com "Kelvin Teo" "Goldman Sachs" colleague
+```
+
+**What to look for:**
+- LinkedIn posts mentioning former colleagues by name
+- "Reunion" posts (former team members meeting up)
+- Testimonials or recommendations from former colleagues
+- "Throwback" posts about previous company days
+- People who followed founder to new company
+- Posts celebrating former colleagues' achievements
+
+**Tech company filter (manual for now):**
+- User specifies which previous companies to search
+- Only include tech companies, startups, or tech-adjacent roles
+- Skip traditional industries unless specifically tech divisions
+
+**Expected output:** 3-8 former colleague relationships
+
+---
+
+### 3.9 Photos & Visual Content
 
 **Objective:** Find photos where founder appears with others
 
