@@ -1,0 +1,64 @@
+FOUNDER RESEARCH REQUEST
+
+Copy this template and fill it out:
+
+---
+
+FOUNDER LINKEDIN URL: 
+FOUNDER NAME: 
+FOUNDER ROLE: 
+COMPANY SLUG: 
+COMPANY WEBSITE: 
+IS_FOUNDER: 
+CO-FOUNDERS: 
+KNOWN INVESTORS: 
+BOARD MEMBERS: 
+RECENT FUNDING: 
+NOTES: 
+
+---
+
+MINIMUM REQUIRED:
+- FOUNDER LINKEDIN URL (required)
+- COMPANY SLUG (required)
+
+RECOMMENDED FOR EFFICIENCY:
+- FOUNDER NAME (saves 2-3 min)
+- FOUNDER ROLE (saves 1-2 min)
+- COMPANY WEBSITE (saves 5-10 min)
+- IS_FOUNDER (Yes/No)
+
+OPTIONAL (Maximum savings):
+- CO-FOUNDERS (with LinkedIn URLs)
+- KNOWN INVESTORS (names or firms)
+- BOARD MEMBERS (names)
+- RECENT FUNDING (round, amount, lead investor, date)
+- NOTES (any context)
+
+---
+
+EXAMPLE (Recommended Input):
+
+FOUNDER LINKEDIN URL: https://www.linkedin.com/in/tkelvin/
+FOUNDER NAME: Kelvin Teo
+FOUNDER ROLE: Co-founder & CEO
+COMPANY SLUG: funding-societies
+COMPANY WEBSITE: https://fundingsocieties.com
+IS_FOUNDER: Yes
+CO-FOUNDERS: Reynold Wijaya (https://www.linkedin.com/in/reynoldwijaya/)
+KNOWN INVESTORS: Sequoia Capital India, SoftBank Ventures Asia
+BOARD MEMBERS: 
+RECENT FUNDING: Series C, $144M, led by SoftBank, Aug 2021
+NOTES: Focus on fintech connections
+
+---
+
+TIME & COST SAVINGS:
+
+Minimum input:     ~45 min research | 0% savings
+Recommended input: ~30 min research | 30% credits saved
+Maximum input:     ~20 min research | 40-50% credits saved
+
+---
+
+For detailed instructions, see: docs/research_input_template.md
