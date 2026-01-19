@@ -24,10 +24,19 @@ This project focuses on mapping close professional relationships of tech founder
   - Base ID: `appt8YGOz5bOK6RpR`
   - Tables: `people_companies`, `people_relationships`
 
+### Tools
+- **Newsletter Export Tool** - Web-based HTML newsletter generator (live)
+  - Location: `tools/newsletter-export-tool/`
+  - Generates funding announcement newsletters with founder profiles and connections
+  - Integrated with Airtable API for real-time data
+
+- **Research Input Tool** - Interactive form for generating standardized search strategies (live)
+  - Location: `tools/research-input-tool/`
+  - Automates creation of search query templates for founder research
+
 ### Future Components (Planned)
-- **Python** - Data entry automation & HTML generation
-- **Airtable API** - Programmatic data access
-- **HTML/CSS** - Newsletter template generation
+- **Python** - Data entry automation scripts
+- **Network visualization** - Graph view of connections
 
 ## Data Sources
 
@@ -66,14 +75,23 @@ See [database_structure.md](./database_structure.md) for detailed schema documen
 4. **Document source** - Record URL where the connection was found
 5. **Categorize relationship** - Former colleague, co-founder, advisor, investor, classmate, other
 
-## Future Roadmap
+## Roadmap
 
+### Completed
+- [x] Build HTML newsletter generation tool (Newsletter Export Tool)
+- [x] Integrate with Airtable API for programmatic data access
+- [x] Create research methodology and search strategy templates
+
+### In Progress
 - [ ] Add 10+ tech founder profiles
-- [ ] Build Python script for automated HTML newsletter generation
 - [ ] Create Airtable views for different use cases (by company, by relationship type, by industry)
+
+### Future
 - [ ] Integrate with Tech in Asia's company database via `tia_company_slug`
 - [ ] Add event tracking (conferences, webinars, speaking engagements)
 - [ ] Build network visualization (graph view of connections)
+- [ ] Email service integration (SendGrid, Mailchimp)
+- [ ] Backend API proxy to secure Airtable credentials
 
 ## Project Context
 
@@ -87,5 +105,5 @@ For questions or contributions, contact the Tech in Asia data team.
 
 ---
 
-**Last Updated:** January 14, 2026  
-**Version:** 0.1.0 (MVP)
+**Last Updated:** January 19, 2026
+**Version:** 0.2.0 (MVP + Newsletter Tool)

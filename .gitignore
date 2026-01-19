@@ -7,6 +7,12 @@
 # Airtable API credentials
 airtable_config.json
 
+# Claude Code MCP config (contains API keys)
+.claude/mcp.json
+
+# ByteRover memory cache
+.brv/
+
 # Python
 __pycache__/
 *.py[cod]

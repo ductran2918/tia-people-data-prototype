@@ -4,8 +4,8 @@
 
 The database consists of two main tables in Airtable that form a relational network of tech founders and their professional connections.
 
-**Airtable Base:** `tia_people_relationship_project`  
-**Base ID:** `appqjXvjvQNxULSjc`
+**Airtable Base:** `tia_people_relationship_project`
+**Base ID:** `appt8YGOz5bOK6RpR`
 
 ---
 
@@ -13,7 +13,7 @@ The database consists of two main tables in Airtable that form a relational netw
 
 **Purpose:** Store profiles of tech founders and key executives.
 
-**Table ID:** `tblPRj2wTXJQxKXqD`
+**Table ID:** `tbl2GFODrbUmOjJUY`
 
 ### Schema (11 fields)
 
@@ -55,9 +55,9 @@ The database consists of two main tables in Airtable that form a relational netw
 
 **Purpose:** Map professional relationships and connections between people, enabling warm introduction paths.
 
-**Table ID:** `tblxUHWHGGXFYZlzV`
+**Table ID:** `tblBUetr6XUt7lZhl`
 
-### Schema (11 fields)
+### Schema (10 fields)
 
 | Field Name | Field Type | Required | Description | Example |
 |------------|-----------|----------|-------------|---------|
@@ -67,16 +67,15 @@ The database consists of two main tables in Airtable that form a relational netw
 | `relationship_type` | Single select | Yes | Predefined category for filtering/querying. | `former_colleague` |
 | `relationship_context` | Long text | Yes | **Critical field:** The narrative that makes introductions credible. | See format below |
 | `source_url` | URL | Yes | Where you discovered this relationship for verification. | `https://www.realvantage.co/our-team` |
-| `created_at` | Created time | Auto | Timestamp when relationship was recorded. | Auto-generated |
 | `created_by` | Created by | Auto | Airtable user who created the relationship record. | Auto-generated |
-| `last_modified_at` | Last modified time | Auto | Timestamp when relationship was last updated. | Auto-generated |
 | `last_modified_by` | Last modified by | Auto | Airtable user who last modified the record. | Auto-generated |
+| `created_at` | Created time | Auto | Timestamp when relationship was recorded. | Auto-generated |
+| `last_modified_at` | Last modified time | Auto | Timestamp when relationship was last updated. | Auto-generated |
 
 ### relationship_type Options
 - `former_colleague` - Worked together at the same company
 - `cofounder` - Co-founded a company together
-- `advisor` - Advisor/advisee relationship
-- `investor` - Investor/founder relationship
+- `investor-investee` - Investor/founder relationship
 - `classmate` - Studied together (university, MBA, bootcamp)
 - `other` - Any other professional connection
 
@@ -211,6 +210,12 @@ Every relationship MUST have a `source_url` that shows:
 
 ## Version History
 
+- **v2.1** (2026-01-19): Schema documentation sync
+  - Corrected Base ID to `appt8YGOz5bOK6RpR`
+  - Corrected Table IDs: `tbl2GFODrbUmOjJUY` (people_companies), `tblBUetr6XUt7lZhl` (people_relationships)
+  - Fixed `people_relationships` field count: 10 fields (not 11)
+  - Updated `relationship_type` options: removed `advisor`, changed `investor` to `investor-investee`
+
 - **v2.0** (2026-01-15): Simplified schema
   - Removed `profile_notes` from `people_companies`
   - Removed `related_person_name`, `related_person_linkedin_url`, `related_person_current_company` from `people_relationships`
@@ -224,5 +229,5 @@ Every relationship MUST have a `source_url` that shows:
 
 ---
 
-**Last Updated:** January 15, 2026  
+**Last Updated:** January 19, 2026
 **Maintained by:** Tech in Asia Data Team

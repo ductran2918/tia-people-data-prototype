@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter Export Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Newsletter Export Tool</h1>
+            <p class="subtitle">Generate HTML newsletters for fundraising announcements</p>
+        </header>
+
+        <!-- Main Grid: Form + Preview -->
+        <div class="main-grid">
+            <!-- Left: Input Form -->
+            <div class="form-section">
+                <h2>Newsletter Details</h2>
+
+                <!-- Company Dropdown -->
+                <div class="form-group">
+                    <label for="companySelect">Select Company *</label>
+                    <select id="companySelect" required>
+                        <option value="">-- Select a company --</option>
+                    </select>
+                    <small>Company data loaded from Airtable</small>
+                </div>
+
+                <!-- News Title -->
+                <div class="form-group">
+                    <label for="newsTitle">News Title *</label>
+                    <input type="text" id="newsTitle" placeholder="e.g., RealVantage Raises $10M" required>
+                </div>
+
+                <!-- Company News -->
+                <div class="form-group">
+                    <label for="companyNews">Company News *</label>
+                    <textarea id="companyNews" rows="6" placeholder="Describe the funding news..." required></textarea>
+                    <small>This will appear in the newsletter body</small>
+                </div>
+
+                <!-- News Link -->
+                <div class="form-group">
+                    <label for="newsLink">News Link *</label>
+                    <input type="url" id="newsLink" placeholder="https://example.com/news-article" required>
+                    <small>Link to the full funding announcement</small>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="button-group">
+                    <button type="button" class="btn btn-primary" id="generateBtn" onclick="generatePreview()">
+                        Generate Preview
+                    </button>
+                    <button type="button" class="btn btn-success" id="downloadBtn" onclick="downloadNewsletter()" disabled>
+                        Download HTML
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right: Preview Pane -->
+            <div class="preview-section">
+                <h2>Newsletter Preview</h2>
+                <div id="previewPane" class="preview-pane">
+                    <p class="preview-placeholder">Select a company and fill in the details, then click "Generate Preview" to see the newsletter.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast Notification -->
+        <div id="toast" class="toast"></div>
+
+        <!-- Loading Spinner -->
+        <div id="loadingSpinner" class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Loading data...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
