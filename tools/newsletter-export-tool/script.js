@@ -1,13 +1,6 @@
-// Airtable Configuration - API credentials and table IDs
-const AIRTABLE_CONFIG = {
-    baseId: 'appt8YGOz5bOK6RpR',
-    apiKey: 'patpdgtDyezo2uy7X.20aab907858ddd44d62a3230805ab9590b284ee1a2a7dfe000c3533bede86fe8',
-    tables: {
-        companies: 'tbl6FbkvaaZJHNjlv',
-        people_companies: 'tbl2GFODrbUmOjJUY',
-        people_relationships: 'tblBUetr6XUt7lZhl'
-    }
-};
+// Airtable Configuration - Loaded from config.js
+// AIRTABLE_CONFIG is defined in config.js which is loaded before this script
+// See config.template.js for the structure
 
 // Global Application State
 let appState = {

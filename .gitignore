@@ -13,6 +13,10 @@ airtable_config.json
 # ByteRover memory cache
 .brv/
 
+# Tool configurations with API keys
+tools/**/config.js
+!tools/**/config.template.js
+
 # Python
 __pycache__/
 *.py[cod]

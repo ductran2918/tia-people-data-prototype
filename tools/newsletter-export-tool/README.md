@@ -21,12 +21,36 @@ This tool creates formatted HTML newsletters that showcase:
 ### Prerequisites
 
 1. Access to Airtable base `appt8YGOz5bOK6RpR`
-2. API key configured in `script.js` (already set up)
+2. Airtable API key (personal access token)
 3. Modern web browser (Chrome, Firefox, Safari, Edge)
 
 ### Installation
 
-No installation required! Simply open `index.html` in your web browser:
+**Step 1: Configure API Key**
+
+```bash
+# Navigate to the tool directory
+cd tools/newsletter-export-tool
+
+# Copy the config template
+cp config.template.js config.js
+
+# Edit config.js and replace YOUR_AIRTABLE_API_KEY_HERE with your actual API key
+# You can use any text editor:
+nano config.js
+# or
+code config.js
+```
+
+**Important Security Notes:**
+- `config.js` contains your API key and is **gitignored** - it won't be committed to GitHub
+- Never commit `config.js` or share it publicly
+- Only commit `config.template.js` (the template without the key)
+- Each developer needs their own `config.js` with their own API key
+
+**Step 2: Open the Tool**
+
+No build process required! Simply open `index.html` in your web browser:
 
 ```bash
 # Navigate to the tool directory
@@ -181,15 +205,31 @@ The tool handles these edge cases:
 
 ## Security Notes
 
-⚠️ **API Key Exposure**: The Airtable API key is visible in client-side code. This is acceptable for internal tools but NOT for public production use. For public deployment, move API calls to a backend proxy.
+### API Key Management
 
-✅ **XSS Protection**: All user inputs are escaped using `textContent` before injecting into HTML.
+✅ **Gitignored Config**: API keys are stored in `config.js` which is **gitignored** and never committed to GitHub.
+
+⚠️ **Client-Side Limitation**: This is a client-side JavaScript app, so the API key is visible in the browser's developer tools. This is acceptable for:
+- Internal tools used by trusted team members
+- Development and prototyping
+
+❌ **Not Suitable For**: Public-facing production websites where anyone can access the key.
+
+**For Production Deployment**, you need to:
+1. Build a backend API proxy that holds the key server-side
+2. Have the frontend call your backend instead of Airtable directly
+3. Or use Airtable's OAuth flow for user-specific authentication
+
+### Input Sanitization
+
+✅ **XSS Protection**: All user inputs are escaped using `textContent` before injecting into HTML to prevent cross-site scripting attacks.
 
 ## Troubleshooting
 
 ### Companies don't load
-- Check browser console for API errors
-- Verify Airtable API key is valid
+- **Check if `config.js` exists** - You must create it from `config.template.js`
+- Verify your API key in `config.js` is correct
+- Check browser console for API errors (404 means config.js not found)
 - Ensure base ID matches your Airtable base
 
 ### Founders not found
