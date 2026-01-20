@@ -12,6 +12,8 @@ This tool creates formatted HTML newsletters that showcase:
 
 - 📊 **Airtable Integration** - Loads companies, founders, and relationships directly from your database
 - ✍️ **Text Formatting** - Apply bold and italic styling to company news with toolbar buttons or keyboard shortcuts
+- 🔗 **Clickable Links** - All names, companies, and sources are underlined and hyperlinked
+- 📎 **Source Attribution** - Each connection includes a clickable (Source) link for verification
 - 👁️ **Live Preview** - See the newsletter before downloading
 - 📱 **Mobile-Friendly** - Responsive design works on all devices
 - 📥 **HTML Export** - Download standalone HTML file for email campaigns
@@ -108,13 +110,14 @@ Read the full funding news → [Link]
 
 ### Part 2: Meet the Founders
 ```
-Meet the Founders
+Meet the founders of [Company Name]
+Click names to view LinkedIn profiles
 
 [Founder Name (LinkedIn)]: Role
 
 Want to reach out to this founder? These people can help open doors
 
-• [Connection Name (LinkedIn)]: Role at [Company (Website)] - relationship context
+• [Connection Name (LinkedIn)]: Role at [Company (Website)] - relationship context (Source)
 • [Another Connection]: ...
 
 [Next Founder...]

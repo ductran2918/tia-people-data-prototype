@@ -338,11 +338,24 @@ small {
 
 .newsletter-preview a {
     color: #0A66C2;
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 .newsletter-preview a:hover {
-    text-decoration: underline;
+    opacity: 0.8;
+}
+
+.newsletter-preview .linkedin-hint {
+    font-size: 14px;
+    color: #666;
+    font-style: italic;
+    margin-top: -8px;
+    margin-bottom: 16px;
+}
+
+.newsletter-preview .source-link {
+    font-size: 12px;
+    color: #999;
 }
 
 .newsletter-preview .separator {

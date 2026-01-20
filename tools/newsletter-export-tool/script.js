@@ -235,7 +235,8 @@ async function generatePreview() {
                             company_name: companyInfo.name,
                             company_website: companyInfo.website,
                             relationship_context: rel.fields.relationship_context || '',
-                            relationship_type: rel.fields.relationship_type || ''
+                            relationship_type: rel.fields.relationship_type || '',
+                            source_url: rel.fields.source_url || ''
                         };
                     } catch (err) {
                         console.error('Error fetching connection details:', err);
@@ -363,7 +364,8 @@ function generateNewsletterHTML(appState) {
     html += `<hr class="separator">`;
 
     // Part 2: Meet the Founders Section
-    html += `<h2>Meet the Founders</h2>`;
+    html += `<h2>Meet the founders of ${escapeHtml(selectedCompany.name)}</h2>`;
+    html += `<p class="linkedin-hint">Click names to view LinkedIn profiles</p>`;
 
     foundersWithConnections.forEach((founder) => {
         html += `<div class="founder-section">`;
@@ -405,6 +407,11 @@ function generateNewsletterHTML(appState) {
                 // Relationship context
                 if (connection.relationship_context) {
                     html += ` - ${escapeHtml(connection.relationship_context)}`;
+                }
+
+                // Source URL link
+                if (connection.source_url) {
+                    html += ` <a href="${escapeHtml(connection.source_url)}" target="_blank" class="source-link">(Source)</a>`;
                 }
 
                 html += `</div>`;
@@ -467,15 +474,22 @@ function downloadNewsletter() {
         }
         a {
             color: #0A66C2;
-            text-decoration: none;
+            text-decoration: underline;
         }
         a:hover {
-            text-decoration: underline;
+            opacity: 0.8;
         }
         .separator {
             border: none;
             border-top: 1px solid #ddd;
             margin: 32px 0;
+        }
+        .linkedin-hint {
+            font-size: 14px;
+            color: #666;
+            font-style: italic;
+            margin-top: -8px;
+            margin-bottom: 16px;
         }
         .founder-section {
             margin-bottom: 32px;
@@ -490,6 +504,10 @@ function downloadNewsletter() {
         }
         .connection-item {
             margin-bottom: 8px;
+        }
+        .source-link {
+            font-size: 12px;
+            color: #999;
         }
         .no-connections {
             color: #999;
