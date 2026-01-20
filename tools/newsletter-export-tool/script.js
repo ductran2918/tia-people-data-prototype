@@ -456,7 +456,7 @@ function generateNewsletterHTML(appState) {
     // Part 1: Funding News Section
     html += `<h1>${safeTitle}</h1>`;
     html += `<p>${formattedContent.replace(/\n/g, '<br>')}</p>`;
-    html += `<p><a href="${safeLink}" target="_blank">Read the full funding news</a></p>`;
+    html += `<p><a href="${safeLink}" target="_blank">Read full article on TechInAsia.com</a></p>`;
 
     // Separator line
     html += `<hr class="separator">`;
@@ -516,7 +516,7 @@ function generateNewsletterHTML(appState) {
             });
         } else {
             // No connections fallback message
-            html += `<p class="no-connections">We don't have the data on this founder's relationship map at the moment. We will update soon</p>`;
+            html += `<p class="no-connections">We don't have the data on this founder's relationship map at the moment. We will update soon.</p>`;
         }
 
         html += `</div>`; // Close connections-subsection

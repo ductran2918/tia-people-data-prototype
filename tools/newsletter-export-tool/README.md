@@ -105,7 +105,7 @@ open -a "Google Chrome" index.html
 
 [Company News Description]
 
-Read the full funding news → [Link]
+Read full article on TechInAsia.com → [Link]
 
 ─────────────────────────
 
