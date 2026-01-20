@@ -19,13 +19,19 @@
             <div class="form-section">
                 <h2>Newsletter Details</h2>
 
-                <!-- Company Dropdown -->
+                <!-- Company Autocomplete -->
                 <div class="form-group">
-                    <label for="companySelect">Select Company *</label>
-                    <select id="companySelect" required>
-                        <option value="">-- Select a company --</option>
-                    </select>
-                    <small>Company data loaded from Airtable</small>
+                    <label for="companySearch">Select Company *</label>
+                    <div class="autocomplete-wrapper">
+                        <input
+                            type="text"
+                            id="companySearch"
+                            placeholder="Type to search companies..."
+                            autocomplete="off"
+                            required>
+                        <div id="companyDropdown" class="autocomplete-dropdown"></div>
+                    </div>
+                    <small>Company data loaded from Airtable - Type to filter results</small>
                 </div>
 
                 <!-- News Title -->

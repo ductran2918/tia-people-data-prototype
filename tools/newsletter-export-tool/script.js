@@ -73,6 +73,113 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Company Autocomplete Functions
+function setupCompanyAutocomplete() {
+    const searchInput = document.getElementById('companySearch');
+    const dropdown = document.getElementById('companyDropdown');
+
+    // Show all companies on focus
+    searchInput.addEventListener('focus', () => {
+        if (!searchInput.value) {
+            displayCompanyResults(appState.companies);
+        }
+    });
+
+    // Filter companies as user types
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+
+        if (!query) {
+            displayCompanyResults(appState.companies);
+            return;
+        }
+
+        // Filter companies by name (case-insensitive)
+        const filtered = appState.companies.filter(company =>
+            company.name.toLowerCase().includes(query)
+        );
+
+        displayCompanyResults(filtered);
+    });
+
+    // Hide dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!searchInput.contains(e.target) && !dropdown.contains(e.target)) {
+            dropdown.style.display = 'none';
+        }
+    });
+
+    // Handle keyboard navigation (optional enhancement)
+    searchInput.addEventListener('keydown', (e) => {
+        const items = dropdown.querySelectorAll('.autocomplete-item');
+        const activeItem = dropdown.querySelector('.autocomplete-item.active');
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            if (!activeItem) {
+                items[0]?.classList.add('active');
+            } else {
+                activeItem.classList.remove('active');
+                const next = activeItem.nextElementSibling;
+                if (next) next.classList.add('active');
+            }
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            if (activeItem) {
+                activeItem.classList.remove('active');
+                const prev = activeItem.previousElementSibling;
+                if (prev) prev.classList.add('active');
+            }
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (activeItem) {
+                activeItem.click();
+            }
+        }
+    });
+}
+
+function displayCompanyResults(companies) {
+    const dropdown = document.getElementById('companyDropdown');
+
+    if (companies.length === 0) {
+        dropdown.innerHTML = '<div class="autocomplete-item no-results">No companies found</div>';
+        dropdown.style.display = 'block';
+        return;
+    }
+
+    dropdown.innerHTML = '';
+
+    companies.forEach(company => {
+        const item = document.createElement('div');
+        item.className = 'autocomplete-item';
+        item.textContent = company.name;
+        item.dataset.slug = company.slug;
+
+        item.addEventListener('click', () => {
+            selectCompany(company);
+        });
+
+        dropdown.appendChild(item);
+    });
+
+    dropdown.style.display = 'block';
+}
+
+function selectCompany(company) {
+    const searchInput = document.getElementById('companySearch');
+    const dropdown = document.getElementById('companyDropdown');
+
+    // Update input with selected company name
+    searchInput.value = company.name;
+
+    // Hide dropdown
+    dropdown.style.display = 'none';
+
+    // Trigger company selection (simulate event for onCompanySelected)
+    onCompanySelected({ target: { value: company.slug } });
+}
+
 // Initialize app on page load
 document.addEventListener('DOMContentLoaded', async () => {
     await initializeApp();
@@ -97,17 +204,8 @@ async function initializeApp() {
         // Sort companies alphabetically by name
         appState.companies.sort((a, b) => a.name.localeCompare(b.name));
 
-        // Populate company dropdown
-        const select = document.getElementById('companySelect');
-        appState.companies.forEach(company => {
-            const option = document.createElement('option');
-            option.value = company.slug;
-            option.textContent = company.name;
-            select.appendChild(option);
-        });
-
-        // Add event listener for company selection
-        select.addEventListener('change', onCompanySelected);
+        // Setup autocomplete for company search
+        setupCompanyAutocomplete();
 
         showLoading(false);
         showToast('Companies loaded successfully!', 'success');

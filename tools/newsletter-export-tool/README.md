@@ -11,6 +11,7 @@ This tool creates formatted HTML newsletters that showcase:
 ## Features
 
 - 📊 **Airtable Integration** - Loads companies, founders, and relationships directly from your database
+- 🔍 **Smart Search** - Autocomplete company search with live filtering as you type
 - ✍️ **Text Formatting** - Apply bold and italic styling to company news with toolbar buttons or keyboard shortcuts
 - 🔗 **Clickable Links** - All names, companies, and sources are underlined and hyperlinked
 - 📎 **Source Attribution** - Each connection includes a clickable (Source) link for verification
@@ -71,7 +72,9 @@ open -a "Google Chrome" index.html
 ### Step 1: Select Company
 - Open the tool in your browser
 - Wait for companies to load (toast notification will confirm)
-- Select a company from the dropdown
+- Type in the search box to filter companies (e.g., type "real" to find RealVantage)
+- Click on a company from the filtered results to select it
+- **Keyboard Navigation**: Use Arrow Up/Down to navigate results, Enter to select
 
 ### Step 2: Fill Newsletter Details
 - **News Title**: e.g., "RealVantage Raises $10M Series B"
