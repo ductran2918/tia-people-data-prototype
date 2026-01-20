@@ -96,6 +96,7 @@ open -a "Google Chrome" index.html
 - Review the preview
 - Click "Download HTML" to save the newsletter
 - File will be named: `{company-slug}-newsletter.html`
+- **Recommended:** Save to `/docs/newsletters/` folder for centralized storage and easy browsing via `/docs/index.html`
 
 ## Newsletter Structure
 
@@ -278,6 +279,25 @@ newsletter-export-tool/
 - `downloadNewsletter()` - Create blob and trigger download
 - `airtableRequest()` - Utility for API calls with error handling
 
+## Newsletter Storage & Browsing
+
+**Centralized Storage:**
+All exported newsletters are saved to `/docs/newsletters/` for centralized management.
+
+**Browse All Newsletters:**
+Open `/docs/index.html` in your browser to see a list of all generated newsletters with quick links to view each one.
+
+**Workflow:**
+1. Generate newsletter using this tool
+2. Save to `/docs/newsletters/` folder when prompted
+3. Update the newsletter list in `/docs/index.html` (line 135-137) to add your new newsletter
+4. Open `/docs/index.html` to browse all newsletters
+
+**Example entry in `/docs/index.html`:**
+```javascript
+{ title: "RealVantage Newsletter", url: "newsletters/realvantage-newsletter.html", date: "Jan 20, 2026" }
+```
+
 ## Future Enhancements
 
 Potential improvements:
@@ -304,6 +324,6 @@ Internal tool for TIA People Data project.
 
 ---
 
-**Last Updated:** 2026-01-19
-**Version:** 1.0.0
+**Last Updated:** 2026-01-20
+**Version:** 1.0.1
 **Tool Type:** Web-based (client-side JavaScript)

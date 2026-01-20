@@ -193,13 +193,24 @@ async function initializeApp() {
         // Fetch all companies from Airtable
         const records = await airtableRequest(AIRTABLE_CONFIG.tables.companies);
 
-        appState.companies = records.map(record => ({
+        console.log(`Fetched ${records.length} company records from Airtable`);
+
+        // Map and filter companies, logging any that are excluded
+        const allMapped = records.map(record => ({
             id: record.id,
             name: record.fields.company_name || '',
             slug: record.fields.company_slug || '',
             website: record.fields.company_website || '',
             country: record.fields.company_location_country || ''
-        })).filter(company => company.name && company.slug);
+        }));
+
+        const excluded = allMapped.filter(company => !company.name || !company.slug);
+        if (excluded.length > 0) {
+            console.warn(`Excluding ${excluded.length} companies with missing name or slug:`, excluded);
+        }
+
+        appState.companies = allMapped.filter(company => company.name && company.slug);
+        console.log(`Loaded ${appState.companies.length} valid companies`);
 
         // Sort companies alphabetically by name
         appState.companies.sort((a, b) => a.name.localeCompare(b.name));
@@ -318,12 +329,22 @@ async function generatePreview() {
                         // Fetch the connected person's company details
                         let companyInfo = { name: '', website: '' };
                         if (person.current_company_slug) {
+                            // Normalize the slug for case-insensitive comparison with whitespace trimming
+                            const normalizedSlug = person.current_company_slug.trim().toLowerCase();
+                            console.log(`Looking for company with slug: "${person.current_company_slug}" (normalized: "${normalizedSlug}") for person: ${person.name}`);
+
                             const companyMatch = appState.companies.find(
-                                c => c.slug === person.current_company_slug
+                                c => c.slug.trim().toLowerCase() === normalizedSlug
                             );
+
                             if (companyMatch) {
+                                console.log(`Found company: ${companyMatch.name}`);
                                 companyInfo = { name: companyMatch.name, website: companyMatch.website };
+                            } else {
+                                console.warn(`Company not found for slug "${person.current_company_slug}". Available slugs:`, appState.companies.map(c => c.slug));
                             }
+                        } else {
+                            console.log(`No current_company_slug for person: ${person.name}`);
                         }
 
                         return {
