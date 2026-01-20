@@ -11,6 +11,7 @@ This tool creates formatted HTML newsletters that showcase:
 ## Features
 
 - 📊 **Airtable Integration** - Loads companies, founders, and relationships directly from your database
+- ✍️ **Text Formatting** - Apply bold and italic styling to company news with toolbar buttons or keyboard shortcuts
 - 👁️ **Live Preview** - See the newsletter before downloading
 - 📱 **Mobile-Friendly** - Responsive design works on all devices
 - 📥 **HTML Export** - Download standalone HTML file for email campaigns
@@ -72,7 +73,10 @@ open -a "Google Chrome" index.html
 
 ### Step 2: Fill Newsletter Details
 - **News Title**: e.g., "RealVantage Raises $10M Series B"
-- **Company News**: Describe the funding announcement (supports multi-line)
+- **Company News**: Describe the funding announcement (supports multi-line and text formatting)
+  - Select text and click **B** for bold or **I** for italic
+  - Keyboard shortcuts: Ctrl/Cmd+B (bold), Ctrl/Cmd+I (italic)
+  - Formatting uses markdown syntax: `**bold**` and `*italic*`
 - **News Link**: URL to the full news article
 
 ### Step 3: Generate Preview

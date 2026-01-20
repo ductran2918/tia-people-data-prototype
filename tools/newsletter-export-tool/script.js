@@ -16,6 +16,63 @@ let appState = {
     htmlOutput: ''                  // Generated HTML for download
 };
 
+// Text Formatting Functions - Apply bold/italic to selected text in textarea
+function applyFormatting(format) {
+    const textarea = document.getElementById('companyNews');
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const selectedText = textarea.value.substring(start, end);
+
+    if (!selectedText) {
+        showToast('Please select text to format', 'error');
+        return;
+    }
+
+    let formattedText = '';
+
+    // Apply markdown syntax for formatting
+    if (format === 'bold') {
+        formattedText = `**${selectedText}**`;
+    } else if (format === 'italic') {
+        formattedText = `*${selectedText}*`;
+    }
+
+    // Replace selected text with formatted version
+    const newValue = textarea.value.substring(0, start) + formattedText + textarea.value.substring(end);
+    textarea.value = newValue;
+
+    // Set cursor position after the formatted text
+    const newCursorPos = start + formattedText.length;
+    textarea.setSelectionRange(newCursorPos, newCursorPos);
+    textarea.focus();
+
+    showToast(`${format.charAt(0).toUpperCase() + format.slice(1)} formatting applied`, 'success');
+}
+
+// Convert markdown formatting to HTML
+function markdownToHtml(text) {
+    // Convert **text** to <strong>text</strong>
+    text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+    // Convert *text* to <em>text</em> (but avoid converting already processed **)
+    text = text.replace(/(?<!\*)\*(?!\*)([^*]+?)\*(?!\*)/g, '<em>$1</em>');
+
+    return text;
+}
+
+// Keyboard shortcuts for formatting (Ctrl/Cmd + B for bold, Ctrl/Cmd + I for italic)
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('companyNews').addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'b') {
+            e.preventDefault();
+            applyFormatting('bold');
+        } else if ((e.ctrlKey || e.metaKey) && e.key === 'i') {
+            e.preventDefault();
+            applyFormatting('italic');
+        }
+    });
+});
+
 // Initialize app on page load
 document.addEventListener('DOMContentLoaded', async () => {
     await initializeApp();
@@ -289,14 +346,17 @@ function generateNewsletterHTML(appState) {
     };
 
     const safeTitle = escapeHtml(newsletter.title);
-    const safeContent = escapeHtml(newsletter.content);
     const safeLink = escapeHtml(newsletter.link);
+
+    // Process company news: escape HTML first, then convert markdown to HTML
+    const safeContent = escapeHtml(newsletter.content);
+    const formattedContent = markdownToHtml(safeContent);
 
     let html = `<div class="newsletter-preview">`;
 
     // Part 1: Funding News Section
     html += `<h1>${safeTitle}</h1>`;
-    html += `<p>${safeContent.replace(/\n/g, '<br>')}</p>`;
+    html += `<p>${formattedContent.replace(/\n/g, '<br>')}</p>`;
     html += `<p><a href="${safeLink}" target="_blank">Read the full funding news</a></p>`;
 
     // Separator line

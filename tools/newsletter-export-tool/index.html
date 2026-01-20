@@ -37,8 +37,17 @@
                 <!-- Company News -->
                 <div class="form-group">
                     <label for="companyNews">Company News *</label>
+                    <div class="formatting-toolbar">
+                        <button type="button" class="btn-format" onclick="applyFormatting('bold')" title="Bold (Ctrl/Cmd+B)">
+                            <strong>B</strong>
+                        </button>
+                        <button type="button" class="btn-format" onclick="applyFormatting('italic')" title="Italic (Ctrl/Cmd+I)">
+                            <em>I</em>
+                        </button>
+                        <small class="format-hint">Select text and click to format</small>
+                    </div>
                     <textarea id="companyNews" rows="6" placeholder="Describe the funding news..." required></textarea>
-                    <small>This will appear in the newsletter body</small>
+                    <small>Use the buttons above to add bold or italic formatting. This will appear in the newsletter body.</small>
                 </div>
 
                 <!-- News Link -->
