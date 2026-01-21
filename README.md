@@ -76,4 +76,4 @@ For detailed weekly updates, see `docs/weekly_updates/`.
 
 ## Contact
 
-Tech in Asia Data Team
+duc@techinasia.com
